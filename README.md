@@ -17,5 +17,5 @@ Loan Calculator
   <br/>
   <h4>Red Version</h4>
   <img src="https://github.com/florin141/loan-calculator/blob/master/_screenshot/LoanAppRed01.jpg" >
-  <img src="https://github.com/florin141/loan-calculator/blob/master/_screenshot/LoanAppRed01.jpg" >
+  <img src="https://github.com/florin141/loan-calculator/blob/master/_screenshot/LoanAppRed02.jpg" >
 </p>

@@ -48,9 +48,7 @@ public class TableDataUtil {
 	/* Returns Amortization Payment TableColumn */
 	public static TableColumn<TableData, String> colLuna() {
 		TableColumn<TableData, String> colLuna = new TableColumn<>("Payment");
-		colLuna.setCellValueFactory(colData -> {
-			return colData.getValue().lunaProperty().asString();
-		});
+		colLuna.setCellValueFactory(colData -> colData.getValue().lunaProperty().asString());
 		colLuna.setCellFactory(cell -> new MyFormatCell());
 		return colLuna;
 	}
@@ -59,9 +57,7 @@ public class TableDataUtil {
 	public static TableColumn<TableData, String> colSoldCreditA() {
 		TableColumn<TableData, String> soldCreditA =
 									new TableColumn<>("Beginning Balance");
-		soldCreditA.setCellValueFactory(colData -> {
-			return colData.getValue().soldCreditAProperty().asString(FORMAT);
-		});
+		soldCreditA.setCellValueFactory(colData -> colData.getValue().soldCreditAProperty().asString(FORMAT));
 		soldCreditA.setCellFactory(cell -> new MyFormatCell());
 		return soldCreditA;
 	}
@@ -70,10 +66,8 @@ public class TableDataUtil {
 	public static TableColumn<TableData, String> colDobandaLunara() {
 		TableColumn<TableData, String> dobandaLunara =
 										new TableColumn<>("Interest");
-		dobandaLunara.setCellValueFactory(colData -> {
-			return colData.getValue().dobandaLunaraProperty()
-														.asString(FORMAT);
-		});
+		dobandaLunara.setCellValueFactory(colData -> colData.getValue().dobandaLunaraProperty()
+													.asString(FORMAT));
 		dobandaLunara.setCellFactory(cell -> new MyFormatCell());
 		return dobandaLunara;
 	}
@@ -82,10 +76,7 @@ public class TableDataUtil {
 	public static TableColumn<TableData, String> colRataCredit() {
 		TableColumn<TableData, String> rataCredit =
 											new TableColumn<>("Principal");
-		rataCredit.setCellValueFactory(colData -> {
-
-			return colData.getValue().rataCreditProperty().asString(FORMAT);
-		});
+		rataCredit.setCellValueFactory(colData -> colData.getValue().rataCreditProperty().asString(FORMAT));
 		rataCredit.setCellFactory(cell -> new MyFormatCell());
 		return rataCredit;
 	}
@@ -94,10 +85,7 @@ public class TableDataUtil {
 	public static TableColumn<TableData, String> colRataLunara() {
 		TableColumn<TableData, String> rataLunara =
 											new TableColumn<>("Payment");
-		rataLunara.setCellValueFactory(colData -> {
-
-			return colData.getValue().rataLunaraProperty().asString(FORMAT);
-		});
+		rataLunara.setCellValueFactory(colData -> colData.getValue().rataLunaraProperty().asString(FORMAT));
 		rataLunara.setCellFactory(cell -> new MyFormatCell());
 		return rataLunara;
 	}
@@ -106,16 +94,14 @@ public class TableDataUtil {
 	public static TableColumn<TableData, String> colSoldCreditB() {
 		TableColumn<TableData, String> soldCreditSfarsit =
 								new TableColumn<>("Ending Balance");
-		soldCreditSfarsit.setCellValueFactory(colData -> {
-			return colData.getValue().soldCreditBProperty().asString(FORMAT);
-		});
+		soldCreditSfarsit.setCellValueFactory(colData -> colData.getValue().soldCreditBProperty().asString(FORMAT));
 		soldCreditSfarsit.setCellFactory(cell -> new MyFormatCell());
 		return soldCreditSfarsit;
 	}
 
 	public static class MyFormatCell extends TableCell<TableData, String> {
 
-		public MyFormatCell() { }
+		MyFormatCell() { }
 
 		@Override
 		protected void updateItem(String item, boolean empty) {

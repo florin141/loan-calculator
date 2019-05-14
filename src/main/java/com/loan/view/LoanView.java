@@ -118,7 +118,7 @@ public class LoanView extends BorderPane {
 		return summaryView;
 	}
 
-	public void actualizeazaTabel(ObservableValue o, String ov, String nv) {
+	private void actualizeazaTabel(ObservableValue o, String ov, String nv) {
 		loanTableView.setItems(TableDataUtil.getTableData(model));
 	}
 }

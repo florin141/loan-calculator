@@ -12,7 +12,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-public class SummaryView extends VBox {
+class SummaryView extends VBox {
 	private LoanModel model;
 
 	private final Label etcRataLunara = new Label("MONTHLY PAYMENT");
@@ -23,7 +23,7 @@ public class SummaryView extends VBox {
 	private Text textDobandaT = new Text();
 	private PieChart chart = new PieChart();
 
-	public SummaryView(LoanModel model) {
+	SummaryView(LoanModel model) {
 		this.model = model;
 
 		init();

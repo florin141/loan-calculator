@@ -3,7 +3,7 @@ language:
 jdk:
   - oraclejdk8
 script:
-  - ./gradlew build --no-daemon
+  - gradle assemble
 before_deploy:
   - export RELEASE_JAR_FILE=$(ls build/libs/*.jar)
 deploy:

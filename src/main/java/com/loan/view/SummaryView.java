@@ -15,13 +15,13 @@ import javafx.scene.text.Text;
 public class SummaryView extends VBox {
 	private LoanModel model;
 
-	private final Label etcRataLunara = new Label("RATA LUNARA");
+	private final Label etcRataLunara = new Label("MONTHLY PAYMENT");
 	private Text textRataLunara = new Text();
-	private final Label etcTotalPlata = new Label("TOTAL DE PLATA");
+	private final Label etcTotalPlata = new Label("TOTAL PAYMENT");
 	private Text textTotalPlata = new Text();
-	private final Label etcDobandaT = new Label("DOBANDA TOTALA");
+	private final Label etcDobandaT = new Label("TOTAL INTEREST");
 	private Text textDobandaT = new Text();
-	private PieChart diagram = new PieChart();
+	private PieChart chart = new PieChart();
 
 	public SummaryView(LoanModel model) {
 		this.model = model;
@@ -34,33 +34,33 @@ public class SummaryView extends VBox {
 		textRataLunara.textProperty().bind(model.rataLunaProperty().asString("$%.2f"));
 		textDobandaT.textProperty().bind(model.totalDobandaProperty().asString("$%.2f"));
 
-		Group stanga = obtGrup(textTotalPlata, etcTotalPlata);
-		Group centru = obtGrup(textRataLunara, etcRataLunara);
-		Group dreapta = obtGrup(textDobandaT, etcDobandaT);
+		Group totalPaymentGroup = getGroup(textTotalPlata, etcTotalPlata);
+		Group monthlyPaymentGroup = getGroup(textRataLunara, etcRataLunara);
+		Group totalInterestGroup = getGroup(textDobandaT, etcDobandaT);
 
 		HBox contInfo = new HBox(80);
-		contInfo.getChildren().addAll(stanga, centru, dreapta);
+		contInfo.getChildren().addAll(totalPaymentGroup, monthlyPaymentGroup, totalInterestGroup);
 
-		diagram.getData().setAll(
-			new PieChart.Data("Credit", 0.0),
-			new PieChart.Data("Dobanda", 0.0));
-		diagram.setStartAngle(90);
-		diagram.getData().get(0).pieValueProperty().bind(model.valoareProperty());
-		diagram.getData().get(1).pieValueProperty().bind(model.totalDobandaProperty());
-		diagram.setLabelsVisible(true);
-		diagram.setClockwise(false);
+		chart.getData().setAll(
+			new PieChart.Data("Principal", 0.0),
+			new PieChart.Data("Interest", 0.0));
+		chart.setStartAngle(90);
+		chart.getData().get(0).pieValueProperty().bind(model.valoareProperty());
+		chart.getData().get(1).pieValueProperty().bind(model.totalDobandaProperty());
+		chart.setLabelsVisible(true);
+		chart.setClockwise(false);
 
 		setAlignment(Pos.CENTER);
-		VBox.setVgrow(diagram, Priority.ALWAYS);
-		getChildren().addAll(new Group(contInfo), diagram);
+		VBox.setVgrow(chart, Priority.ALWAYS);
+		getChildren().addAll(new Group(contInfo), chart);
 	}
 
-	private Group obtGrup(Text textTotalPlata, Label etcTotalPlata) {
+	private Group getGroup(Text amount, Label description) {
 		VBox cont = new VBox(-3);
 		cont.setAlignment(Pos.CENTER);
-		textTotalPlata.setFont(Font.font(null, FontWeight.BOLD, 52));
-		etcTotalPlata.setFont(Font.font(null, 24));
-		cont.getChildren().addAll(textTotalPlata, etcTotalPlata);
+		amount.setFont(Font.font(null, FontWeight.BOLD, 52));
+		description.setFont(Font.font(null, 24));
+		cont.getChildren().addAll(amount, description);
 		return new Group(cont);
 	}
 }

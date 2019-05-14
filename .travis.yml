@@ -1,9 +1,16 @@
-language: java
-before_install:
-  - chmod +x gradlew
-script:
-  - ./gradlew assemble --no-daemon
+language:
+  java
 jdk:
- - oraclejdk8
-os:
-- linux
+  - oraclejdk8
+script:
+  - ./gradlew build --no-daemon
+before_deploy:
+  - export RELEASE_JAR_FILE=$(ls build/libs/*.jar)
+deploy:
+  provider: releases
+  api_key: '$API_KEY'
+  file_glob: true
+  file: "${RELEASE_JAR_FILE}"
+  skip_cleanup: true
+  on:
+tags: true

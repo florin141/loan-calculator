@@ -20,27 +20,23 @@ import javafx.util.converter.IntegerStringConverter;
 public class LoanView extends BorderPane {
 	private LoanModel model;
 	
-	/* CONSTANTE */
+	/** Constants */
 	private static final double INALTIME_PREF_SUS = 80;
 	private static final double INALTIME_PREF_JOS = 80;
-	public static final Color COL = Color.ROYALBLUE;
-	public static final Insets INS = Insets.EMPTY;
-	public static final CornerRadii RAD = CornerRadii.EMPTY;
-	public static final BackgroundFill FUNDAL_UMP = new BackgroundFill(COL, RAD, INS);
+	private static final Background BACKGROUND = new Background(new BackgroundFill(Color.ROYALBLUE, CornerRadii.EMPTY, Insets.EMPTY));
 
-	/** TOP */
+	/** Top */
 	private TextField cdtValoareImp = new TextField();
-	private final Label etcValoareImp = new Label("Valoare Credit");
+	private final Label etcValoareImp = new Label("Loan Amount");
 	private TextField cdtNrLuni = new TextField();
-	private final Label etcNrLuni = new Label("Numar Luni");
+	private final Label etcNrLuni = new Label("Loan Term (months)");
 	private TextField cdtDobanda = new TextField();
-	private final Label etcDobanda = new Label("Dobanda Anuala");
+	private final Label etcDobanda = new Label("Annual Interest Rate (%)");
 
 	/** BOTTOM */
-	private final Button butGraficRamb = new Button("Grafic Rambursare");
-	private final Button butRezumat = new Button("Rezumat");
+	private final Button btnAmortizationToggle = new Button("Show amortization schedule");
 
-	/** CENTER */
+	/** Center */
 	private SummaryView summaryView;
 	private LoanTableView loanTableView;
 
@@ -75,7 +71,7 @@ public class LoanView extends BorderPane {
 		set(etcDobanda, cdtDobanda);
 
 		contSus.setSpacing(20);
-		contSus.setBackground(new Background(FUNDAL_UMP));
+		contSus.setBackground(BACKGROUND);
 		contSus.setPrefHeight(INALTIME_PREF_SUS);
 		contSus.setMinHeight(USE_PREF_SIZE);
 		contSus.setMaxHeight(USE_PREF_SIZE);
@@ -88,14 +84,11 @@ public class LoanView extends BorderPane {
 	private HBox contJos() {
 		HBox contJos = new HBox(20);
 
-		butGraficRamb.setFont(Font.font(null, FontWeight.BOLD, 12));
-		butRezumat.setFont(Font.font(null, FontWeight.BOLD, 12));
+		btnAmortizationToggle.setFont(Font.font(null, FontWeight.BOLD, 12));
+		btnAmortizationToggle.setPrefSize(200, 25);
 
-		butGraficRamb.setPrefSize(200, 25);
-		butRezumat.setPrefSize(200, 25);
-
-		contJos.getChildren().addAll(butRezumat, butGraficRamb);
-		contJos.setBackground(new Background(FUNDAL_UMP));
+		contJos.getChildren().addAll(btnAmortizationToggle);
+		contJos.setBackground(BACKGROUND);
 		contJos.setPrefHeight(INALTIME_PREF_JOS);
 		contJos.setMinHeight(USE_PREF_SIZE);
 		contJos.setMaxHeight(USE_PREF_SIZE);
@@ -114,11 +107,7 @@ public class LoanView extends BorderPane {
 	}
 
 	public Button butGraficRamb() {
-		return butGraficRamb;
-	}
-
-	public Button butRezumat() {
-		return butRezumat;
+		return btnAmortizationToggle;
 	}
 
 	public LoanTableView loanTableView() {

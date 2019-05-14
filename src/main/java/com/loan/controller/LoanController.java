@@ -11,18 +11,16 @@ public class LoanController {
 
 		/* se inregistreaza metodele de tratare a evenimentelor*/
 		view.butGraficRamb().setOnMouseClicked(this::afiseazaGraficRamb);
-		view.butRezumat().setOnMouseClicked(this::afiseazaRezumat);
 	}
 
 	private void afiseazaGraficRamb(Event event) {
 		if (!view.getCenter().equals(view.loanTableView())) {
 			view.setCenter(view.loanTableView());
+			view.butGraficRamb().setText("Hide amortization schedule");
 		}
-	}
-
-	private void afiseazaRezumat(Event event) {
-		if (!view.getCenter().equals(view.summaryView())) {
+		else if (!view.getCenter().equals(view.summaryView())) {
 			view.setCenter(view.summaryView());
+			view.butGraficRamb().setText("Show amortization schedule");
 		}
 	}
 }

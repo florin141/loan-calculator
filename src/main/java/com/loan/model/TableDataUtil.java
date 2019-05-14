@@ -6,6 +6,9 @@ import javafx.geometry.Pos;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class TableDataUtil {
 
 	private static final String FORMAT = "%.2f";
@@ -44,7 +47,7 @@ public class TableDataUtil {
 
 	/* Returns Amortization Payment TableColumn */
 	public static TableColumn<TableData, String> colLuna() {
-		TableColumn<TableData, String> colLuna = new TableColumn<>("Luna");
+		TableColumn<TableData, String> colLuna = new TableColumn<>("Payment");
 		colLuna.setCellValueFactory(colData -> {
 			return colData.getValue().lunaProperty().asString();
 		});
@@ -55,7 +58,7 @@ public class TableDataUtil {
 	/* Returns Amortization Beginning Balance TableColumn */
 	public static TableColumn<TableData, String> colSoldCreditA() {
 		TableColumn<TableData, String> soldCreditA =
-									new TableColumn<>("Sold Credit Inceput");
+									new TableColumn<>("Beginning Balance");
 		soldCreditA.setCellValueFactory(colData -> {
 			return colData.getValue().soldCreditAProperty().asString(FORMAT);
 		});
@@ -66,7 +69,7 @@ public class TableDataUtil {
 	/* Returns Amortization Interest TableColumn */
 	public static TableColumn<TableData, String> colDobandaLunara() {
 		TableColumn<TableData, String> dobandaLunara =
-										new TableColumn<>("Dobanda Lunara");
+										new TableColumn<>("Interest");
 		dobandaLunara.setCellValueFactory(colData -> {
 			return colData.getValue().dobandaLunaraProperty()
 														.asString(FORMAT);
@@ -78,7 +81,7 @@ public class TableDataUtil {
 	/* Returns Amortization Principal TableColumn */
 	public static TableColumn<TableData, String> colRataCredit() {
 		TableColumn<TableData, String> rataCredit =
-											new TableColumn<>("Rata Credit");
+											new TableColumn<>("Principal");
 		rataCredit.setCellValueFactory(colData -> {
 
 			return colData.getValue().rataCreditProperty().asString(FORMAT);
@@ -90,7 +93,7 @@ public class TableDataUtil {
 	/* Returns Amortization Monthly Payment TableColumn */
 	public static TableColumn<TableData, String> colRataLunara() {
 		TableColumn<TableData, String> rataLunara =
-											new TableColumn<>("Rata Lunara");
+											new TableColumn<>("Payment");
 		rataLunara.setCellValueFactory(colData -> {
 
 			return colData.getValue().rataLunaraProperty().asString(FORMAT);
@@ -102,7 +105,7 @@ public class TableDataUtil {
 	/* Returns Amortization Principal TableColumn */
 	public static TableColumn<TableData, String> colSoldCreditB() {
 		TableColumn<TableData, String> soldCreditSfarsit =
-								new TableColumn<>("Sold Credit Sfarsit");
+								new TableColumn<>("Ending Balance");
 		soldCreditSfarsit.setCellValueFactory(colData -> {
 			return colData.getValue().soldCreditBProperty().asString(FORMAT);
 		});

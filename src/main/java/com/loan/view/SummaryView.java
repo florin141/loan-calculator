@@ -11,6 +11,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import java.util.Currency;
+import java.util.Locale;
 
 class SummaryView extends VBox {
 	private LoanModel model;
@@ -30,9 +32,13 @@ class SummaryView extends VBox {
 	}
 
 	private void init() {
-		textTotalPlata.textProperty().bind(model.totalPlataProperty().asString("$%.2f"));
-		textRataLunara.textProperty().bind(model.rataLunaProperty().asString("$%.2f"));
-		textDobandaT.textProperty().bind(model.totalDobandaProperty().asString("$%.2f"));
+		Locale locale = Locale.getDefault();
+		Currency currency = Currency.getInstance(locale);
+		String symbol = currency.getSymbol();
+
+		textTotalPlata.textProperty().bind(model.totalPlataProperty().asString(symbol + "%.2f"));
+		textRataLunara.textProperty().bind(model.rataLunaProperty().asString(symbol + "%.2f"));
+		textDobandaT.textProperty().bind(model.totalDobandaProperty().asString(symbol + "%.2f"));
 
 		Group totalPaymentGroup = getGroup(textTotalPlata, etcTotalPlata);
 		Group monthlyPaymentGroup = getGroup(textRataLunara, etcRataLunara);

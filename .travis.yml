@@ -1,9 +1,9 @@
-language:
-  java
+sudo: required
+language: java
 jdk:
-  - oraclejdk13
+  - oraclejdk11
 before_install:
-  - chmod +x gradlew
+  - chmod u+x gradlew
 script:
   - gradle assemble
 before_deploy:
